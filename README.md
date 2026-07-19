@@ -427,7 +427,7 @@ All of physics, in this framework, is then the geometry of M: its metric, its ge
 
 - A consistent geometric home for the notebook's insights. The two-scale Θ system, the helical worldline, the cone constraint, the Z/ζ split, and the 5D implication all find their place in a single coherent structure.
 - A new perspective on time. For the cycle-carrying worldlines the framework is built on, time is not a dimension but the arc length swept through the event plane; proper time flows because we move, and the observer at rest is — in five dimensions — riding a light ray.
-- A bridge between a 15-year-old's notebook and the mathematical language needed to express what he was reaching toward.
+- A bridge between a 17-year-old's notebook and the mathematical language needed to express what he was reaching toward.
 
 ### 15.13 Open Questions
 
