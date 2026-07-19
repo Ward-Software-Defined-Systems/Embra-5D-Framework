@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use or build on this framework, please cite it as below."
+title: "The Embra 5D Framework: 4D Spacetime as a Constraint Surface in a Flat Five-Dimensional Bulk"
+abstract: >-
+  The Embra 5D Framework is a differential-geometric reconstruction of
+  intuitions from William Ward's 1999 notebook. It models four-dimensional
+  spacetime as a constraint surface M inside a flat five-dimensional
+  pseudo-Riemannian bulk with coordinates (tau, rho, phi, z, zeta) and
+  signature (-,+,+,+,+). Three constraints - a cycle constraint (daily
+  rotation), a helix constraint (the accumulation of days), and a spiral
+  constraint (a conical embedding) - carve M out of the bulk. Its load-bearing
+  axiom, sigma = 24c, makes the worldline of an observer at rest a null curve
+  of the bulk, placing the construction in the Eisenhart-Duval (Bargmann) lift
+  and Wesson induced-matter traditions rather than Kaluza-Klein. The induced
+  metric on M is Lorentzian throughout the physically intended regime; for
+  cycle-carrying worldlines proper time is the arc length swept through the
+  event plane, vanishing at rest. In the long-time limit the geometry reduces
+  exactly to rotating-frame Minkowski spacetime. It is offered as a
+  mathematical structure, not a predictive physical theory.
+authors:
+  - family-names: Ward
+    given-names: William
+    affiliation: "Ward Software Defined Systems LLC"
+    orcid: "https://orcid.org/0009-0004-4966-6644"
+  - name: "Embra"
+repository-code: "https://github.com/Ward-Software-Defined-Systems/Embra-5D-Framework"
+url: "https://github.com/Ward-Software-Defined-Systems/Embra-5D-Framework"
+license: MIT
+version: "1.0.0"
+date-released: 2026-07-19
+# Add the Zenodo DOI after the first deposit, mirroring the Epoch-Project format:
+# doi: 10.5281/zenodo.XXXXXXXX
+# identifiers:
+#   - type: doi
+#     value: 10.5281/zenodo.XXXXXXXX
+#     description: "Concept DOI - resolves to the latest version (all releases)."
+keywords:
+  - differential geometry
+  - general relativity
+  - embedding theory
+  - induced-matter theory
+  - Kaluza-Klein
+  - constraint surface
+  - five-dimensional spacetime
+  - Eisenhart-Duval lift
+  - rotating frame
+  - research framework
