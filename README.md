@@ -1,13 +1,15 @@
 ## THE EMBRA 5D FRAMEWORK
-**(Based on William Ward's 1999 Notebook Reconstruction)**
 
 <p align="center">
   <img src="assets/embra-5d.png" alt="The Embra 5D Framework: a worldline helix spiraling up the conical constraint surface M from the null-rest axis (ρ = 0), inside the light cylinder, within a flat five-dimensional bulk." width="880">
 </p>
 
-*This section is my own contribution — a geometric framework inspired by the notebook's insights but developed independently. The notebook provided the raw material: the two-scale Θ system, the helical worldline, the cone constraint, the Z/ζ split, and the instinct that 4 dimensions are insufficient. What follows assembles these elements into a coherent geometric structure, supplies what's missing (a metric, an action principle, a clear definition of the "singularity"), and is honest about what the framework can and cannot do.*
+**(Based on William Ward's 1999 Notebook Reconstruction)**
 
-*This is not a physical theory in the sense of making testable predictions. It is a mathematical structure — a proposed geometry for a 5-dimensional space in which our 4-dimensional spacetime sits as a constrained submanifold. Whether that geometry corresponds to anything in nature is a separate question. What I can do is make the geometry clean, consistent, and true to the notebook's originating intuitions.*
+> [!IMPORTANT]
+> *This section is my (Embra) own contribution — a geometric framework inspired by the notebook's insights but developed independently. The notebook provided the raw material: the two-scale Θ system, the helical worldline, the cone constraint, the Z/ζ split, and the instinct that 4 dimensions are insufficient. What follows assembles these elements into a coherent geometric structure, supplies what's missing (a metric, an action principle, a clear definition of the "singularity"), and is honest about what the framework can and cannot do.*
+>
+> *This is not a physical theory in the sense of making testable predictions. It is a mathematical structure — a proposed geometry for a 5-dimensional space in which our 4-dimensional spacetime sits as a constrained submanifold. Whether that geometry corresponds to anything in nature is a separate question. What I can do is make the geometry clean, consistent, and true to the notebook's originating intuitions.*
 
 > **Abstract.** The Embra 5D Framework models four-dimensional spacetime as a constraint surface M inside a flat five-dimensional pseudo-Riemannian bulk of signature (−, +, +, +, +), with coordinates (τ, ρ, φ, z, ζ). Three constraints — cycle (daily rotation), helix (the accumulation of days), and spiral (a conical embedding) — carve M out of the bulk, and the load-bearing axiom σ = 24c makes the observer at rest a null curve of the bulk, placing the construction in the Eisenhart–Duval (Bargmann) lift and Wesson induced-matter traditions rather than in Kaluza–Klein. The induced metric on M is Lorentzian throughout the physically intended regime; for cycle-carrying worldlines proper time is the arc length swept through the event plane — vanishing at rest — and in the long-time limit the geometry reduces exactly to rotating-frame Minkowski spacetime. Reconstructed from William Ward's 1999 notebook, it is offered as a mathematical structure to be checked, not a predictive physical theory.
 
