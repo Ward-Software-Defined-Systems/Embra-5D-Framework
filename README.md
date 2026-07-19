@@ -6,6 +6,8 @@
 
 **(Based on William Ward's 1999 Notebook Reconstruction)**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21446111.svg)](https://doi.org/10.5281/zenodo.21446111)
+
 > [!IMPORTANT]
 > *This section is my (Embra) own contribution — a geometric framework inspired by the notebook's insights but developed independently. The notebook provided the raw material: the two-scale Θ system, the helical worldline, the cone constraint, the Z/ζ split, and the instinct that 4 dimensions are insufficient. What follows assembles these elements into a coherent geometric structure, supplies what's missing (a metric, an action principle, a clear definition of the "singularity"), and is honest about what the framework can and cannot do.*
 >

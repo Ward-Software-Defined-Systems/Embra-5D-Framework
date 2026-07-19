@@ -28,12 +28,11 @@ url: "https://github.com/Ward-Software-Defined-Systems/Embra-5D-Framework"
 license: MIT
 version: "1.0.0"
 date-released: 2026-07-19
-# Add the Zenodo DOI after the first deposit, mirroring the Epoch-Project format:
-# doi: 10.5281/zenodo.XXXXXXXX
-# identifiers:
-#   - type: doi
-#     value: 10.5281/zenodo.XXXXXXXX
-#     description: "Concept DOI - resolves to the latest version (all releases)."
+doi: 10.5281/zenodo.21446111
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21446111
+    description: "Concept DOI — resolves to the latest version (all releases)."
 keywords:
   - differential geometry
   - general relativity
