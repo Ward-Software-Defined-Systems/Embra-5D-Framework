@@ -11,3 +11,12 @@ CLAUDE.md
 .venv/
 __pycache__/
 *.pyc
+
+# Node / build artifacts (the app/ has its own .gitignore too; these are repo-wide safety nets)
+node_modules/
+dist/
+dist-ssr/
+.wrangler/
+.dev.vars*
+*.local
+*.log
