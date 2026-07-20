@@ -1,6 +1,6 @@
 # Embra 5D — Visualizer
 
-**Live:** [app.ward-software-defined-systems.workers.dev](https://app.ward-software-defined-systems.workers.dev)
+**Live:** [embra-5d.ward-software-defined-systems.workers.dev](https://embra-5d.ward-software-defined-systems.workers.dev)
 
 Interactive 3D visualization of the [Embra 5D Framework](../README.md)'s geometry. The default render plots **the now-point**: the present date/time, measured from the chosen epoch, riding the worldline helix in real time — with the framework's thesis live in the HUD: coordinate time τ ticks forward while proper arc length **Δs holds at exactly 0.000** on the stationary worldline, and begins accruing at ≈ ρω the moment the ρ slider leaves zero (§15.6 — "rest is null").
 
