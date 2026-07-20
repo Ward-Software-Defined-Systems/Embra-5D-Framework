@@ -1,5 +1,7 @@
 # Embra 5D — Visualizer
 
+**Live:** [app.ward-software-defined-systems.workers.dev](https://app.ward-software-defined-systems.workers.dev)
+
 Interactive 3D visualization of the [Embra 5D Framework](../README.md)'s geometry. The default render plots **the now-point**: the present date/time, measured from the chosen epoch, riding the worldline helix in real time — with the framework's thesis live in the HUD: coordinate time τ ticks forward while proper arc length **Δs holds at exactly 0.000** on the stationary worldline, and begins accruing at ≈ ρω the moment the ρ slider leaves zero (§15.6 — "rest is null").
 
 Spec of record: [`VISUALIZER_BUILD_BRIEF.md`](../VISUALIZER_BUILD_BRIEF.md). Geometry of record: the theory paper as reconciled to [`5D_FRAMEWORK_REVIEW.md`](../5D_FRAMEWORK_REVIEW.md) (ζ-chart induced metric).
@@ -56,4 +58,5 @@ Display frame (brief §6): the event plane (ρ, φ) maps to x/z, the ζ-climb to
 - [x] M6 — overlays (signature locus + Riemannian-pocket tint, null helices,
       ζ slice), scrub-to-early-epoch, URL-shareable state
 
-v1 feature-complete per the build brief; next step is deploy (Workers Builds).
+v1 feature-complete per the build brief and deployed to Cloudflare Workers
+(static assets; the Worker script only falls through for future `/api/*`).

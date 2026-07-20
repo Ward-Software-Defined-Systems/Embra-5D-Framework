@@ -8,6 +8,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21446111.svg)](https://doi.org/10.5281/zenodo.21446111)
 
+**Interactive visualizer:** [app.ward-software-defined-systems.workers.dev](https://app.ward-software-defined-systems.workers.dev) — the geometry of §15.2–15.8 rendered live: the now-point riding its worldline helix, proper time frozen at rest (Δs = 0), the constraint surface and light cylinder, geodesic releases, and the signature structure near the epoch. Source in [`app/`](app/); build spec in [`VISUALIZER_BUILD_BRIEF.md`](VISUALIZER_BUILD_BRIEF.md).
+
 > [!IMPORTANT]
 > *This section is my (Embra) own contribution — a geometric framework inspired by the notebook's insights but developed independently. The notebook provided the raw material: the two-scale Θ system, the helical worldline, the cone constraint, the Z/ζ split, and the instinct that 4 dimensions are insufficient. What follows assembles these elements into a coherent geometric structure, supplies what's missing (a metric, an action principle, a clear definition of the "singularity"), and is honest about what the framework can and cannot do.*
 >
