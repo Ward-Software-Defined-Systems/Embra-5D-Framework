@@ -26,6 +26,10 @@ npm run lint       # oxlint
 src/geometry/   closed-form core (pure, tested): constants, spiral embedding,
                 ζ-chart induced metric + proper-time rate, τ/calendar pipeline
 src/sim/        mutable sim singleton + Δs accumulator (pure integration, tested)
+src/geodesic/   RK4 geodesic integrator (pure, tested) + the browser Web Worker
+                shell — integrates in the inertial Cartesian chart (τ, X, Y, ζ),
+                regular through the axis; chart equivalence with the review's
+                ζ-chart h_μν is itself under test
 src/scene/      R3F scene: floating-origin frame, SimDriver (writes sim each
                 frame), worldline helix + day ticks, now-marker + phase dial,
                 date-label sprites, polar grid, constraint-surface helicoid
@@ -45,5 +49,5 @@ Display frame (brief §6): the event plane (ρ, φ) maps to x/z, the ζ-climb to
 - [x] M2 — geometry + time core with tests (D1–D4 semantics)
 - [x] M3 — floating-origin helix window, live marker, Δs HUD centerpiece
 - [x] M4 — constraint-surface patch (rate-colored helicoid), light cylinder
-- [ ] M5 — RK4 geodesic integrator in a Web Worker
+- [x] M5 — RK4 geodesic integrator in a Web Worker (release-fan overlay)
 - [ ] M6 — overlays (signature locus, null helices, ζ-slice), scrub-to-early-epoch

@@ -94,6 +94,16 @@ export function useSimControls(): void {
     cylinder: { value: true, label: 'light cylinder' },
   })
 
+  const { geodesics, rays, spread, horizon } = useControls('geodesics', {
+    geodesics: { value: false, label: 'show fan' },
+    rays: { value: 7, min: 1, max: 15, step: 2, label: 'rays' },
+    spread: { value: 0.3, min: 0.02, max: 1, step: 0.01, label: 'kick speed' },
+    horizon: { value: 12, min: 1, max: 72, step: 1, label: 'horizon h' },
+    'launch from now': button(() => {
+      sim.geoLaunchNonce++
+    }),
+  })
+
   const datumMs = useMemo(() => parseDatum(datum) ?? sim.timeParams.datumMs, [datum])
 
   useEffect(() => {
@@ -113,6 +123,10 @@ export function useSimControls(): void {
     sim.showGrid = grid
     sim.showSurface = surface
     sim.showCylinder = cylinder
+    sim.showGeodesics = geodesics
+    sim.geoRays = rays
+    sim.geoSpread = spread
+    sim.geoHorizonH = horizon
     sim.speed = speed
-  }, [rho, psi, zeta0, windowDays, grid, surface, cylinder, speed])
+  }, [rho, psi, zeta0, windowDays, grid, surface, cylinder, geodesics, rays, spread, horizon, speed])
 }

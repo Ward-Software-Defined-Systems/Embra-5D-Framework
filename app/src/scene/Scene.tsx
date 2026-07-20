@@ -4,6 +4,7 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { DayLabels } from './DayLabels'
+import { Geodesics } from './Geodesics'
 import { LightCylinder } from './LightCylinder'
 import { NowMarker } from './NowMarker'
 import { PolarGrid } from './PolarGrid'
@@ -25,6 +26,7 @@ export function Scene() {
       <SurfacePatch />
       <LightCylinder />
       <Worldline />
+      <Geodesics />
       <DayLabels />
       <NowMarker />
       <OrbitControls makeDefault enableDamping dampingFactor={0.08} minDistance={1.2} maxDistance={90} />

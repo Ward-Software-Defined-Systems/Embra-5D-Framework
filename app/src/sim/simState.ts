@@ -27,6 +27,14 @@ export interface SimState {
   showSurface: boolean
   showCylinder: boolean
 
+  /** Geodesic fan (M5): released test particles from the now-point. */
+  showGeodesics: boolean
+  geoRays: number
+  geoSpread: number
+  geoHorizonH: number
+  /** Bumped by the launch button to force a relaunch from the current now. */
+  geoLaunchNonce: number
+
   /** Per-frame outputs (driver-written). */
   tauMarker: number
   markerDateMs: number
@@ -54,6 +62,11 @@ export const sim: SimState = {
   showGrid: true,
   showSurface: true,
   showCylinder: true,
+  showGeodesics: false,
+  geoRays: 7,
+  geoSpread: 0.3,
+  geoHorizonH: 12,
+  geoLaunchNonce: 0,
   tauMarker: tauNow(Date.now(), defaultParams),
   markerDateMs: Date.now(),
   ds: 0,
