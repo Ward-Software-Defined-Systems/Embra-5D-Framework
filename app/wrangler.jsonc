@@ -7,6 +7,9 @@
 	"name": "embra-5d",
 	"main": "worker/index.ts",
 	"compatibility_date": "2026-07-19",
+	"routes": [
+		{ "pattern": "embra-5d.wsds.ai", "custom_domain": true }
+	],
 	"assets": {
 		"not_found_handling": "single-page-application"
 	},
