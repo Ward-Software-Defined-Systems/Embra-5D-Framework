@@ -3,6 +3,7 @@
 // moment ρ leaves zero. DOM updates are imperative (rAF + textContent), so the
 // React tree renders once.
 import { useEffect, useRef } from 'react'
+import { signatureAt } from '../geometry/metric'
 import { clockDisplay, zetaFromTau } from '../geometry/time'
 import { markerPhase } from '../scene/frame'
 import { sim } from '../sim/simState'
@@ -58,6 +59,7 @@ export function Hud() {
   const zeta = useRef<HTMLElement>(null)
   const phi = useRef<HTMLElement>(null)
   const expl = useRef<HTMLElement>(null)
+  const sig = useRef<HTMLElement>(null)
   const dsBlock = useRef<HTMLDivElement>(null)
   const ds = useRef<HTMLDivElement>(null)
   const caption = useRef<HTMLElement>(null)
@@ -81,6 +83,12 @@ export function Hud() {
       if (phi.current) phi.current.textContent = `${markerPhase(t, sim.psi).toFixed(3)} rad`
       if (expl.current)
         expl.current.textContent = `ρ ${sim.rho.toFixed(3)} · ψ ${sim.psi.toFixed(3)} · ζ₀ ${sim.zeta0}`
+      if (sig.current) {
+        const s = signatureAt(t, sim.rho)
+        sig.current.textContent =
+          s === 'lorentzian' ? 'Lorentzian (−,+,+,+)' : s === 'riemannian' ? 'RIEMANNIAN POCKET' : 'degenerate (locus)'
+        sig.current.className = s === 'lorentzian' ? '' : 'sig-alert'
+      }
       if (ds.current) ds.current.textContent = fmtDs(sim.ds)
       if (dsBlock.current) dsBlock.current.className = sim.dsRate > 0 ? 'hud-ds accruing' : 'hud-ds'
       if (caption.current)
@@ -132,6 +140,10 @@ export function Hud() {
       <div className="hud-row">
         <span className="k">worldline</span>
         <span ref={expl} />
+      </div>
+      <div className="hud-row">
+        <span className="k">signature</span>
+        <span ref={sig} />
       </div>
       <div ref={dsBlock} className="hud-ds">
         <div className="hud-row">

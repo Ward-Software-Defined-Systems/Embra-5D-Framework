@@ -7,10 +7,13 @@ import { DayLabels } from './DayLabels'
 import { Geodesics } from './Geodesics'
 import { LightCylinder } from './LightCylinder'
 import { NowMarker } from './NowMarker'
+import { NullHelices } from './NullHelices'
 import { PolarGrid } from './PolarGrid'
+import { SignatureLocus } from './SignatureLocus'
 import { SimDriver } from './SimDriver'
 import { SurfacePatch } from './SurfacePatch'
 import { Worldline } from './Worldline'
+import { ZetaSlice } from './ZetaSlice'
 
 export function Scene() {
   return (
@@ -23,8 +26,11 @@ export function Scene() {
       <fog attach="fog" args={['#05070f', 20, 55]} />
       <SimDriver />
       <PolarGrid />
+      <ZetaSlice />
       <SurfacePatch />
       <LightCylinder />
+      <SignatureLocus />
+      <NullHelices />
       <Worldline />
       <Geodesics />
       <DayLabels />

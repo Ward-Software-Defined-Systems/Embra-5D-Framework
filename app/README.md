@@ -35,9 +35,12 @@ src/scene/      R3F scene: floating-origin frame, SimDriver (writes sim each
                 date-label sprites, polar grid, constraint-surface helicoid
                 (colored by dΔs/dτ — the rate = 1 band is the light cylinder
                 at present-day τ), light cylinder at ρ = 1/ω
-src/hud/        DOM overlay — τ/clock/date/ζ/φ/Δs readout (imperative, no
-                per-frame React renders)
-src/controls.ts leva panel → sim (datum D2 · basis+λ D3 · ρ/ψ/ζ₀ D4 · speed/scrub · window)
+src/hud/        DOM overlay — τ/clock/date/ζ/φ/signature/Δs readout
+                (imperative, no per-frame React renders)
+src/controls.ts leva panel → sim (datum D2 · basis+λ D3 · ρ/ψ/ζ₀ D4 · speed/scrub
+                · deep scrub to epoch · window · overlays · geodesic fan)
+src/urlState.ts shareable state in the URL hash (§8) — short keys, defaults
+                omitted, sanitized on parse; no backend state
 worker/         Cloudflare Worker entry (static-assets fallthrough only in v1)
 ```
 
@@ -50,4 +53,7 @@ Display frame (brief §6): the event plane (ρ, φ) maps to x/z, the ζ-climb to
 - [x] M3 — floating-origin helix window, live marker, Δs HUD centerpiece
 - [x] M4 — constraint-surface patch (rate-colored helicoid), light cylinder
 - [x] M5 — RK4 geodesic integrator in a Web Worker (release-fan overlay)
-- [ ] M6 — overlays (signature locus, null helices, ζ-slice), scrub-to-early-epoch
+- [x] M6 — overlays (signature locus + Riemannian-pocket tint, null helices,
+      ζ slice), scrub-to-early-epoch, URL-shareable state
+
+v1 feature-complete per the build brief; next step is deploy (Workers Builds).

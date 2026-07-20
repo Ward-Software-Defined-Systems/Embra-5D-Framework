@@ -15,9 +15,10 @@ import {
   Mesh,
   MeshBasicMaterial,
 } from 'three'
+import { zRho, zTau } from '../geometry/embedding'
 import { properTimeRateSafe } from '../sim/clock'
 import { sim } from '../sim/simState'
-import { helicoidLocalPos, markerPhase, MAX_WINDOW_DAYS } from './frame'
+import { helicoidLocalPos, markerPhase, MAX_WINDOW_DAYS, patchRhoMax } from './frame'
 import { rateToColor } from './rateColor'
 
 const SEGS_PER_DAY = 48
@@ -25,10 +26,9 @@ const RHO_SEGS = 48
 const MAX_TAU_SEGS = 2 * MAX_WINDOW_DAYS * SEGS_PER_DAY
 const MAX_VERTS = (MAX_TAU_SEGS + 1) * (RHO_SEGS + 1)
 
-/** The patch always contains the worldline: grows with ρ in 0.5 steps. */
-function patchRhoMax(rho: number): number {
-  return Math.max(5, Math.ceil((rho * 1.05) / 0.5) * 0.5)
-}
+// Riemannian-pocket tint (signature overlay): blended over the rate ramp
+// where z_τ² > 1 + z_ρ².
+const POCKET = [0.78, 0.3, 0.62] as const
 
 function makeGeometry(): BufferGeometry {
   const geom = new BufferGeometry()
@@ -83,11 +83,23 @@ function fillColors(geom: BufferGeometry, windowDays: number, rhoMax: number, ta
   const c = col.array as Float32Array
   const tSegs = 2 * windowDays * SEGS_PER_DAY
   const half = windowDays * 24
+  const tintPocket = sim.showSignature
   let v = 0
   for (let j = 0; j <= tSegs; j++) {
     const tau = tauMarker - half + (48 * windowDays * j) / tSegs
     for (let i = 0; i <= RHO_SEGS; i++) {
-      rateToColor(properTimeRateSafe(tau, (rhoMax * i) / RHO_SEGS), c, v * 3)
+      const rho = (rhoMax * i) / RHO_SEGS
+      const o = v * 3
+      rateToColor(properTimeRateSafe(tau, rho), c, o)
+      if (tintPocket) {
+        const zt = zTau(tau, rho)
+        const zr = zRho(tau, rho)
+        if (!(zt * zt <= 1 + zr * zr)) {
+          c[o] = 0.4 * c[o] + 0.6 * POCKET[0]
+          c[o + 1] = 0.4 * c[o + 1] + 0.6 * POCKET[1]
+          c[o + 2] = 0.4 * c[o + 2] + 0.6 * POCKET[2]
+        }
+      }
       v++
     }
   }
@@ -110,7 +122,7 @@ export function SurfacePatch() {
     [],
   )
   const built = useRef({ windowDays: 0, rhoMax: 0 })
-  const colored = useRef({ tau: Number.NaN, version: -1 })
+  const colored = useRef({ tau: Number.NaN, version: -1, signature: false })
 
   useEffect(() => {
     mesh.frustumCulled = false
@@ -134,10 +146,14 @@ export function SurfacePatch() {
     }
 
     // Recolor only when τ has moved enough to matter (relative — the rate
-    // field varies on the scale of τ itself) or the time params changed.
+    // field varies on the scale of τ itself) or the params/overlay changed.
     const since = Math.abs(tauMarker - colored.current.tau)
-    if (colored.current.version !== sim.paramsVersion || !(since <= Math.max(0.25, 0.001 * Math.abs(colored.current.tau)))) {
-      colored.current = { tau: tauMarker, version: sim.paramsVersion }
+    if (
+      colored.current.version !== sim.paramsVersion ||
+      colored.current.signature !== sim.showSignature ||
+      !(since <= Math.max(0.25, 0.001 * Math.abs(colored.current.tau)))
+    ) {
+      colored.current = { tau: tauMarker, version: sim.paramsVersion, signature: sim.showSignature }
       fillColors(mesh.geometry, windowDays, rhoMax, tauMarker)
     }
 

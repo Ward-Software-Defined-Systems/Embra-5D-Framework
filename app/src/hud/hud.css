@@ -101,6 +101,11 @@
   color: #b98d54;
 }
 
+.sig-alert {
+  color: #ff5e9c;
+  text-shadow: 0 0 14px rgba(255, 94, 156, 0.35);
+}
+
 .hud-foot {
   margin-top: 8px;
   padding-top: 7px;

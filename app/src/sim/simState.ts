@@ -26,6 +26,10 @@ export interface SimState {
   /** Overlay toggles (§7): constraint-surface patch and light cylinder. */
   showSurface: boolean
   showCylinder: boolean
+  /** M6 overlays (off at first paint): signature locus/pocket, null helices, ζ slice. */
+  showSignature: boolean
+  showNullHelices: boolean
+  showZetaSlice: boolean
 
   /** Geodesic fan (M5): released test particles from the now-point. */
   showGeodesics: boolean
@@ -62,6 +66,9 @@ export const sim: SimState = {
   showGrid: true,
   showSurface: true,
   showCylinder: true,
+  showSignature: false,
+  showNullHelices: false,
+  showZetaSlice: false,
   showGeodesics: false,
   geoRays: 7,
   geoSpread: 0.3,

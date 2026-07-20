@@ -68,3 +68,8 @@ export function helicoidLocalPos(
   out[i + 2] = -rho * Math.sin(a)
   return out
 }
+
+/** Radial extent of the surface patch / plane furniture: always contains the worldline, grows in 0.5 steps. */
+export function patchRhoMax(rho: number): number {
+  return Math.max(5, Math.ceil((rho * 1.05) / 0.5) * 0.5)
+}
