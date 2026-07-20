@@ -1,32 +1,47 @@
-# React + TypeScript + Vite
+# Embra 5D — Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Interactive 3D visualization of the [Embra 5D Framework](../README.md)'s geometry. The default render plots **the now-point**: the present date/time, measured from the chosen epoch, riding the worldline helix in real time — with the framework's thesis live in the HUD: coordinate time τ ticks forward while proper arc length **Δs holds at exactly 0.000** on the stationary worldline, and begins accruing at ≈ ρω the moment the ρ slider leaves zero (§15.6 — "rest is null").
 
-Currently, two official plugins are available:
+Spec of record: [`VISUALIZER_BUILD_BRIEF.md`](../VISUALIZER_BUILD_BRIEF.md). Geometry of record: the theory paper as reconciled to [`5D_FRAMEWORK_REVIEW.md`](../5D_FRAMEWORK_REVIEW.md) (ζ-chart induced metric).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+Vite + TypeScript + React + React Three Fiber, leva controls, deployed as a **Cloudflare Worker with static assets** (`wrangler.jsonc`; v1 is fully static — the Worker only falls through for future `/api/*`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Commands
 
-## Expanding the Oxlint configuration
+Node 22 (`fnm use`), then:
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+npm run dev        # vite dev server
+npm test           # vitest — the geometry/time/Δs invariants (mirrors ../verify/)
+npm run build      # tsc -b && vite build
+npm run deploy     # build && wrangler deploy
+npm run lint       # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Layout
+
+```
+src/geometry/   closed-form core (pure, tested): constants, spiral embedding,
+                ζ-chart induced metric + proper-time rate, τ/calendar pipeline
+src/sim/        mutable sim singleton + Δs accumulator (pure integration, tested)
+src/scene/      R3F scene: floating-origin frame, SimDriver (writes sim each
+                frame), worldline helix + day ticks, now-marker + phase dial,
+                date-label sprites, polar grid
+src/hud/        DOM overlay — τ/clock/date/ζ/φ/Δs readout (imperative, no
+                per-frame React renders)
+src/controls.ts leva panel → sim (datum D2 · basis+λ D3 · ρ/ψ/ζ₀ D4 · speed/scrub · window)
+worker/         Cloudflare Worker entry (static-assets fallthrough only in v1)
+```
+
+Display frame (brief §6): the event plane (ρ, φ) maps to x/z, the ζ-climb to y, **recentered on the marker every frame** — all positions are computed in f64 on the CPU and only small recentered coordinates reach the GPU. One helix winding = one day = one ζ-unit of climb.
+
+## Milestones
+
+- [x] M1 — scaffold (Workers + Vite + React + R3F + leva)
+- [x] M2 — geometry + time core with tests (D1–D4 semantics)
+- [x] M3 — floating-origin helix window, live marker, Δs HUD centerpiece
+- [ ] M4 — constraint-surface patch, light cylinder
+- [ ] M5 — RK4 geodesic integrator in a Web Worker
+- [ ] M6 — overlays (signature locus, null helices, ζ-slice), scrub-to-early-epoch
