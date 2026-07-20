@@ -42,3 +42,29 @@ export function markerPhase(tauMarker: number, psi: number): number {
   const twoPi = 2 * Math.PI
   return (((OMEGA * tauMarker + psi) % twoPi) + twoPi) % twoPi
 }
+
+/**
+ * The constraint-surface patch through the current worldline (M4) is the
+ * fixed-(ψ, ζ₀) helicoid: the (τ, ρ) 2-slice of M rendered in display space.
+ * In the marker-local frame (δ = τ − τ_marker, phase measured from the
+ * marker's φ) it is STATIC geometry:
+ *
+ *   local(δ, ρ) = (ρ·cos(ωδ), (δ/24)·DAY_HEIGHT, −ρ·sin(ωδ))
+ *
+ * and the live surface is local(δ, ρ) rotated about y by markerPhase — an
+ * exact identity with displayPos (cos(a+b) expansion), locked by a test.
+ * So the mesh is rebuilt only when the window/patch size changes; each frame
+ * just sets rotation.y.
+ */
+export function helicoidLocalPos(
+  delta: number,
+  rho: number,
+  out: Float32Array | number[],
+  i = 0,
+): Float32Array | number[] {
+  const a = OMEGA * delta
+  out[i] = rho * Math.cos(a)
+  out[i + 1] = (delta / 24) * DAY_HEIGHT
+  out[i + 2] = -rho * Math.sin(a)
+  return out
+}

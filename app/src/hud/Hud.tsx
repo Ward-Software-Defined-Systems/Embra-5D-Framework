@@ -86,7 +86,7 @@ export function Hud() {
       if (caption.current)
         caption.current.textContent =
           sim.dsRate > 0
-            ? `accruing at ${sim.dsRate.toFixed(4)} per hour (≈ ρω)`
+            ? `accruing at ${sim.dsRate.toFixed(4)} per hour (≈ ρω)${sim.dsRate > 1 ? ' — beyond the light cylinder' : ''}`
             : 'rest is null — proper time has not begun to flow'
       if (rate.current) rate.current.textContent = sim.dsRate.toFixed(4)
       if (foot.current) {

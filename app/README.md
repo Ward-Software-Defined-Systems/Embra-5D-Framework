@@ -28,7 +28,9 @@ src/geometry/   closed-form core (pure, tested): constants, spiral embedding,
 src/sim/        mutable sim singleton + Δs accumulator (pure integration, tested)
 src/scene/      R3F scene: floating-origin frame, SimDriver (writes sim each
                 frame), worldline helix + day ticks, now-marker + phase dial,
-                date-label sprites, polar grid
+                date-label sprites, polar grid, constraint-surface helicoid
+                (colored by dΔs/dτ — the rate = 1 band is the light cylinder
+                at present-day τ), light cylinder at ρ = 1/ω
 src/hud/        DOM overlay — τ/clock/date/ζ/φ/Δs readout (imperative, no
                 per-frame React renders)
 src/controls.ts leva panel → sim (datum D2 · basis+λ D3 · ρ/ψ/ζ₀ D4 · speed/scrub · window)
@@ -42,6 +44,6 @@ Display frame (brief §6): the event plane (ρ, φ) maps to x/z, the ζ-climb to
 - [x] M1 — scaffold (Workers + Vite + React + R3F + leva)
 - [x] M2 — geometry + time core with tests (D1–D4 semantics)
 - [x] M3 — floating-origin helix window, live marker, Δs HUD centerpiece
-- [ ] M4 — constraint-surface patch, light cylinder
+- [x] M4 — constraint-surface patch (rate-colored helicoid), light cylinder
 - [ ] M5 — RK4 geodesic integrator in a Web Worker
 - [ ] M6 — overlays (signature locus, null helices, ζ-slice), scrub-to-early-epoch

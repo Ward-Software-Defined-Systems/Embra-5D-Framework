@@ -89,6 +89,11 @@ export function useSimControls(): void {
     grid: { value: true, label: 'polar grid' },
   })
 
+  const { surface, cylinder } = useControls('overlays', {
+    surface: { value: true, label: 'constraint surface' },
+    cylinder: { value: true, label: 'light cylinder' },
+  })
+
   const datumMs = useMemo(() => parseDatum(datum) ?? sim.timeParams.datumMs, [datum])
 
   useEffect(() => {
@@ -106,6 +111,8 @@ export function useSimControls(): void {
     sim.zeta0 = zeta0
     sim.windowDays = windowDays
     sim.showGrid = grid
+    sim.showSurface = surface
+    sim.showCylinder = cylinder
     sim.speed = speed
-  }, [rho, psi, zeta0, windowDays, grid, speed])
+  }, [rho, psi, zeta0, windowDays, grid, surface, cylinder, speed])
 }

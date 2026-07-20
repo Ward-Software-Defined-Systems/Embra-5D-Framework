@@ -4,9 +4,11 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { DayLabels } from './DayLabels'
+import { LightCylinder } from './LightCylinder'
 import { NowMarker } from './NowMarker'
 import { PolarGrid } from './PolarGrid'
 import { SimDriver } from './SimDriver'
+import { SurfacePatch } from './SurfacePatch'
 import { Worldline } from './Worldline'
 
 export function Scene() {
@@ -20,6 +22,8 @@ export function Scene() {
       <fog attach="fog" args={['#05070f', 20, 55]} />
       <SimDriver />
       <PolarGrid />
+      <SurfacePatch />
+      <LightCylinder />
       <Worldline />
       <DayLabels />
       <NowMarker />

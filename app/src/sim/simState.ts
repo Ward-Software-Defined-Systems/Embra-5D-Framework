@@ -23,6 +23,9 @@ export interface SimState {
   /** Rendered window half-width, days (§6, default ±3). */
   windowDays: number
   showGrid: boolean
+  /** Overlay toggles (§7): constraint-surface patch and light cylinder. */
+  showSurface: boolean
+  showCylinder: boolean
 
   /** Per-frame outputs (driver-written). */
   tauMarker: number
@@ -49,6 +52,8 @@ export const sim: SimState = {
   zeta0: 0,
   windowDays: 3,
   showGrid: true,
+  showSurface: true,
+  showCylinder: true,
   tauMarker: tauNow(Date.now(), defaultParams),
   markerDateMs: Date.now(),
   ds: 0,
